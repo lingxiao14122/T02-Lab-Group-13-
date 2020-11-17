@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context=".GameActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvDealerCards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvPlayerCards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layout_buttonGroup"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+
+    <Button
+        android:id="@+id/btn_gamePlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:onClick="btnGamePlay_clicked"
+        android:text="Play" />
+
+    <LinearLayout
+        android:id="@+id/layout_buttonGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_hit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:onClick="btnHit_clicked"
+            android:text="Hit" />
+
+        <Button
+            android:id="@+id/btn_stand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:onClick="btnStand_clicked"
+            android:text="Stand" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:id="@+id/tv_totalRound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Round: 0"
+            android:textColor="@color/colorGameText"/>
+
+        <TextView
+            android:id="@+id/tv_totalRoundWon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Round Won: 0"
+            android:textColor="@color/colorGameText"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp">
+
+        <TextView
+            android:id="@+id/tv_currentScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current Score: 0"
+            android:textColor="@color/colorGameText"/>
+    </LinearLayout>
+
+</RelativeLayout>

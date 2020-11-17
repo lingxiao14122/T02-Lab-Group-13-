@@ -1,0 +1,148 @@
+<resources>
+    <string name="app_name">BlackJack Card Game</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="cards_clubs_name">
+        <item>cards_clubs_ace</item>
+        <item>cards_clubs_two</item>
+        <item>cards_clubs_three</item>
+        <item>cards_clubs_four</item>
+        <item>cards_clubs_five</item>
+        <item>cards_clubs_six</item>
+        <item>cards_clubs_seven</item>
+        <item>cards_clubs_eight</item>
+        <item>cards_clubs_nine</item>
+        <item>cards_clubs_ten</item>
+        <item>cards_clubs_jack</item>
+        <item>cards_clubs_queen</item>
+        <item>cards_clubs_king</item>
+    </string-array>
+
+    <string-array name="cards_diamonds_name">
+        <item>cards_diamonds_ace</item>
+        <item>cards_diamonds_two</item>
+        <item>cards_diamonds_three</item>
+        <item>cards_diamonds_four</item>
+        <item>cards_diamonds_five</item>
+        <item>cards_diamonds_six</item>
+        <item>cards_diamonds_seven</item>
+        <item>cards_diamonds_eight</item>
+        <item>cards_diamonds_nine</item>
+        <item>cards_diamonds_ten</item>
+        <item>cards_diamonds_jack</item>
+        <item>cards_diamonds_queen</item>
+        <item>cards_diamonds_king</item>
+    </string-array>
+
+    <string-array name="cards_hearts_name">
+        <item>cards_hearts_ace</item>
+        <item>cards_hearts_two</item>
+        <item>cards_hearts_three</item>
+        <item>cards_hearts_four</item>
+        <item>cards_hearts_five</item>
+        <item>cards_hearts_six</item>
+        <item>cards_hearts_seven</item>
+        <item>cards_hearts_eight</item>
+        <item>cards_hearts_nine</item>
+        <item>cards_hearts_ten</item>
+        <item>cards_hearts_jack</item>
+        <item>cards_hearts_queen</item>
+        <item>cards_hearts_king</item>
+    </string-array>
+
+    <string-array name="cards_spades_name">
+        <item>cards_spades_ace</item>
+        <item>cards_spades_two</item>
+        <item>cards_spades_three</item>
+        <item>cards_spades_four</item>
+        <item>cards_spades_five</item>
+        <item>cards_spades_six</item>
+        <item>cards_spades_seven</item>
+        <item>cards_spades_eight</item>
+        <item>cards_spades_nine</item>
+        <item>cards_spades_ten</item>
+        <item>cards_spades_jack</item>
+        <item>cards_spades_queen</item>
+        <item>cards_spades_king</item>
+    </string-array>
+    
+    <string-array name="cards_clubs_image">
+        <item>@drawable/cards_clubs_ace</item>
+        <item>@drawable/cards_clubs_two</item>
+        <item>@drawable/cards_clubs_three</item>
+        <item>@drawable/cards_clubs_four</item>
+        <item>@drawable/cards_clubs_five</item>
+        <item>@drawable/cards_clubs_six</item>
+        <item>@drawable/cards_clubs_seven</item>
+        <item>@drawable/cards_clubs_eight</item>
+        <item>@drawable/cards_clubs_nine</item>
+        <item>@drawable/cards_clubs_ten</item>
+        <item>@drawable/cards_clubs_jack</item>
+        <item>@drawable/cards_clubs_queen</item>
+        <item>@drawable/cards_clubs_king</item>
+    </string-array>
+
+    <string-array name="cards_diamonds_image">
+        <item>@drawable/cards_diamonds_ace</item>
+        <item>@drawable/cards_diamonds_two</item>
+        <item>@drawable/cards_diamonds_three</item>
+        <item>@drawable/cards_diamonds_four</item>
+        <item>@drawable/cards_diamonds_five</item>
+        <item>@drawable/cards_diamonds_six</item>
+        <item>@drawable/cards_diamonds_seven</item>
+        <item>@drawable/cards_diamonds_eight</item>
+        <item>@drawable/cards_diamonds_nine</item>
+        <item>@drawable/cards_diamonds_ten</item>
+        <item>@drawable/cards_diamonds_jack</item>
+        <item>@drawable/cards_diamonds_queen</item>
+        <item>@drawable/cards_diamonds_king</item>
+    </string-array>
+
+    <string-array name="cards_hearts_image">
+        <item>@drawable/cards_hearts_ace</item>
+        <item>@drawable/cards_hearts_two</item>
+        <item>@drawable/cards_hearts_three</item>
+        <item>@drawable/cards_hearts_four</item>
+        <item>@drawable/cards_hearts_five</item>
+        <item>@drawable/cards_hearts_six</item>
+        <item>@drawable/cards_hearts_seven</item>
+        <item>@drawable/cards_hearts_eight</item>
+        <item>@drawable/cards_hearts_nine</item>
+        <item>@drawable/cards_hearts_ten</item>
+        <item>@drawable/cards_hearts_jack</item>
+        <item>@drawable/cards_hearts_queen</item>
+        <item>@drawable/cards_hearts_king</item>
+    </string-array>
+
+    <string-array name="cards_spades_image">
+        <item>@drawable/cards_spades_ace</item>
+        <item>@drawable/cards_spades_two</item>
+        <item>@drawable/cards_spades_three</item>
+        <item>@drawable/cards_spades_four</item>
+        <item>@drawable/cards_spades_five</item>
+        <item>@drawable/cards_spades_six</item>
+        <item>@drawable/cards_spades_seven</item>
+        <item>@drawable/cards_spades_eight</item>
+        <item>@drawable/cards_spades_nine</item>
+        <item>@drawable/cards_spades_ten</item>
+        <item>@drawable/cards_spades_jack</item>
+        <item>@drawable/cards_spades_queen</item>
+        <item>@drawable/cards_spades_king</item>
+    </string-array>
+
+    <string-array name="cards_score">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>10</item>
+        <item>10</item>
+        <item>10</item>
+    </string-array>
+</resources>
