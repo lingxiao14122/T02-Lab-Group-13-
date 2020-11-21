@@ -17,6 +17,7 @@ public class CardListAdapter extends RecyclerView.Adapter<CardListAdapter.CardVi
 
     private ArrayList<PokerCard> cardList;
     private LayoutInflater mInflater;
+    private boolean updateImage;
 
     class CardViewHolder extends RecyclerView.ViewHolder{
 
@@ -41,6 +42,8 @@ public class CardListAdapter extends RecyclerView.Adapter<CardListAdapter.CardVi
     @Override
     public CardViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
         View mItemView = mInflater.inflate(R.layout.cardlist_item, viewGroup, false);
+        ImageView iv_card = mItemView.findViewById(R.id.ivCard);
+        iv_card.setImageResource(R.drawable.cards_cover);
 
         return new CardViewHolder(mItemView, this);
     }
@@ -49,6 +52,10 @@ public class CardListAdapter extends RecyclerView.Adapter<CardListAdapter.CardVi
     public void onBindViewHolder(@NonNull CardViewHolder cardViewHolder, int position) {
         String cardName = cardList.get(position).getCardName();
         cardViewHolder.mCount.setText(cardName);
+
+        if(updateImage){
+            cardViewHolder.iv_card.setImageResource(R.drawable.cards_cover);
+        }
     }
 
     @Override
@@ -56,7 +63,11 @@ public class CardListAdapter extends RecyclerView.Adapter<CardListAdapter.CardVi
         return cardList.size();
     }
 
-    public void flipCard(CardViewHolder cardViewHolder, int position){
-        Glide.with(cardViewHolder.iv_card).load(cardList.get(position).getCardResource());
+    public void setUpdateImage(boolean updateImage){
+        this.updateImage = updateImage;
+    }
+
+    public void setValues(ArrayList<PokerCard> cardList) {
+        this.cardList = cardList;
     }
 }

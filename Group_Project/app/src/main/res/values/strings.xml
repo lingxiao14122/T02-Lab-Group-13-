@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">BlackJack Card Game</string>
+    <string name="action_history">History</string>
     <string name="action_settings">Settings</string>
 
     <string-array name="cards_clubs_name">
@@ -65,7 +66,7 @@
         <item>cards_spades_queen</item>
         <item>cards_spades_king</item>
     </string-array>
-    
+
     <string-array name="cards_clubs_image">
         <item>@drawable/cards_clubs_ace</item>
         <item>@drawable/cards_clubs_two</item>
@@ -144,5 +145,13 @@
         <item>10</item>
         <item>10</item>
         <item>10</item>
+    </string-array>
+
+    <string-array name="cards_settings">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
     </string-array>
 </resources>

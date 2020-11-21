@@ -27,13 +27,57 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp" />
 
-    <Button
-        android:id="@+id/btn_gamePlay"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:onClick="btnGamePlay_clicked"
-        android:text="Play" />
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_gamePlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="btnGamePlay_clicked"
+            android:background="@drawable/game_btn"
+            android:layout_margin="5dp"
+            android:text="Play" />
+
+        <Button
+            android:id="@+id/btn_firstQuitGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="btnFirstQuitGame_clicked"
+            android:background="@drawable/game_btn"
+            android:layout_margin="5dp"
+            android:text="Quit" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_gamePlayAgain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/game_btn"
+            android:layout_margin="5dp"
+            android:onClick="btnGamePlayAgain_clicked"
+            android:text="Play Again" />
+
+        <Button
+            android:id="@+id/btn_quitGame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/game_btn"
+            android:layout_margin="5dp"
+            android:onClick="btnQuitGame_clicked"
+            android:text="Quit" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout_buttonGroup"
@@ -49,6 +93,8 @@
             android:layout_gravity="center"
             android:layout_weight="0.5"
             android:onClick="btnHit_clicked"
+            android:background="@drawable/game_btn"
+            android:layout_margin="5dp"
             android:text="Hit" />
 
         <Button
@@ -58,6 +104,8 @@
             android:layout_gravity="center"
             android:layout_weight="0.5"
             android:onClick="btnStand_clicked"
+            android:background="@drawable/game_btn"
+            android:layout_margin="5dp"
             android:text="Stand" />
     </LinearLayout>
 
@@ -96,8 +144,20 @@
             android:id="@+id/tv_currentScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Current Score: 0"
+            android:text="Score: 0"
             android:textColor="@color/colorGameText"/>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_gameResult"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:background="#8000"
+        android:gravity="center"
+        android:text="You Win"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorGameText"/>
 
 </RelativeLayout>

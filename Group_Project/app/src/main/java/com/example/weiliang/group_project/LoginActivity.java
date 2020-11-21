@@ -14,6 +14,7 @@ public class LoginActivity extends AppCompatActivity {
     public final static String KEY_USERNAME = "com.example.weiliang.group_project.Username";
     public final static String KEY_FULLNAME = "com.example.weiliang.group_project.FullName";
     public final static String KEY_PASSWORD = "com.example.weiliang.group_project.Password";
+    public final static String KEY_USERID = "com.example.weiliang.group_project.UserId";
     public final static int REGISTER_REQUEST_CODE = 1;
 
     private EditText mEt_username;
@@ -49,10 +50,15 @@ public class LoginActivity extends AppCompatActivity {
             if(checkAuth){
                 Toast.makeText(LoginActivity.this, "Successful Login.", Toast.LENGTH_SHORT).show();
 
+                int userId = mDb.getUserId(username, password);
+
                 Intent intent = new Intent(this, MainMenuActivity.class);
+                intent.putExtra(KEY_USERID, userId);
                 startActivity(intent);
             } else {
                 Toast.makeText(LoginActivity.this, "Login failed, Username or password is incorrect.", Toast.LENGTH_SHORT).show();
+                mEt_username.setText("");
+                mEt_password.setText("");
             }
         } else {
             Toast.makeText(LoginActivity.this, "Error: Input not completed", Toast.LENGTH_SHORT).show();
@@ -93,7 +99,11 @@ public class LoginActivity extends AppCompatActivity {
             String password = data.getStringExtra(KEY_PASSWORD);
 
             mDb.insertUserInfo(fullName, username, password);
+            mEt_username.setText("");
+            mEt_password.setText("");
             mEt_username.setText(username);
+
+            Toast.makeText(LoginActivity.this, "Successful Register, welcome new user.", Toast.LENGTH_SHORT).show();
         }
     }
 }

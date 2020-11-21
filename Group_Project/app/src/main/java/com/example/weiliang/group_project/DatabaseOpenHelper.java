@@ -22,8 +22,8 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String userSqlStatement = "CREATE TABLE user_info(_id INTEGER PRIMARY KEY, full_name TEXT, username TEXT, password TEXT);";
-        String historySqlStatement = "CREATE TABLE history(_id INTEGER PRIMARY KEY, userId INTEGER, date_time TEXT, total_round INTEGER, total_round_won INTEGER);";
+        String userSqlStatement = "CREATE TABLE user_info(_id INTEGER PRIMARY KEY AUTOINCREMENT, full_name TEXT, username TEXT, password TEXT);";
+        String historySqlStatement = "CREATE TABLE history(_id INTEGER PRIMARY KEY AUTOINCREMENT, userId INTEGER, date_time TEXT, total_round INTEGER, total_round_won INTEGER, cards_setting INTEGER);";
 
         try{
             sqLiteDatabase.execSQL(userSqlStatement);
@@ -37,6 +37,8 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         long newId = 0;
 
         ContentValues values = new ContentValues();
+        Log.e(null, "Username: " + username);
+        values.put("_id", ((int) userCount() + 1));
         values.put("full_name", fullName);
         values.put("username", username);
         values.put("password", password);
@@ -44,7 +46,30 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         try {
             if(writableDb == null) writableDb = getWritableDatabase();
             writableDb.insert(USER_INFO_TABLE_NAME, null, values);
+            Log.e(null, "Successful insert user info");
         } catch(Exception e){
+            Log.e("Database Exception: ", e.getMessage());
+        }
+
+        return newId;
+    }
+
+    public long insertHistory(int userId, String dateTime, int totalRound, int totalRoundWon, int cardsSetting){
+        long newId = 0;
+
+        ContentValues values = new ContentValues();
+        values.put("_id", ((int) historyCount() + 1));
+        values.put("userId", userId);
+        values.put("date_time", dateTime);
+        values.put("total_round", totalRound);
+        values.put("total_round_won", totalRoundWon);
+        values.put("cards_setting", cardsSetting);
+
+        try {
+            if(writableDb == null) writableDb = getWritableDatabase();
+            writableDb.insert(HISTORY_TABLE_NAME, null, values);
+            Log.e(null, "Successful insert history");
+        } catch (Exception e){
             Log.e("Database Exception: ", e.getMessage());
         }
 
@@ -62,7 +87,8 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
             search.moveToFirst();
 
             loop:{
-                for(int i = 0; i < search.getCount(); i ++){
+                for(int i = 0; i < search.getCount(); i++){
+                    search.move(i);
                     if(username.equals(search.getString(search.getColumnIndex("username"))) && password.equals(search.getString(search.getColumnIndex("password")))){
                         result = true;
                         break loop;
@@ -75,6 +101,46 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         }
 
         return result;
+    }
+
+    public int getUserId(String username, String password){
+        int result = 0;
+        Cursor search = null;
+
+        try{
+            if (readableDb == null) readableDb = getReadableDatabase();
+            String sqlStatement = "SELECT * FROM `" + USER_INFO_TABLE_NAME + "`";
+            search = readableDb.rawQuery(sqlStatement, null);
+            search.moveToFirst();
+
+            loop:{
+                for(int i = 0; i < search.getCount(); i ++){
+                    search.move(i);
+                    if(username.equals(search.getString(search.getColumnIndex("username"))) && password.equals(search.getString(search.getColumnIndex("password")))){
+                        result = search.getInt(search.getColumnIndex("_id"));
+                        break loop;
+                    }
+                }
+            }
+        } catch (Exception e){
+            Log.e("Database Exception: ", e.getMessage());
+        }
+
+        return result;
+    }
+
+    public Cursor getHistory(int userId){
+        Cursor search = null;
+
+        try{
+            if(readableDb == null) readableDb = getReadableDatabase();
+            String sqlStatement = "SELECT * FROM `" + HISTORY_TABLE_NAME + "` WHERE `userId` = '" + userId + "'";
+            search = readableDb.rawQuery(sqlStatement, null);
+        } catch (Exception e){
+            Log.e("Database Exception: ", e.getMessage());
+        }
+
+        return search;
     }
 
     public long userCount(){
