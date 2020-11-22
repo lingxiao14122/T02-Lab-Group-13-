@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ListPreference
-        android:defaultValue="1"
         android:entries="@array/cards_settings"
         android:entryValues="@array/cards_settings"
+        android:defaultValue="3"
         android:key="maximum_cards"
         android:title="Maximum Cards"
         android:summary="Maximum Cards"/>
