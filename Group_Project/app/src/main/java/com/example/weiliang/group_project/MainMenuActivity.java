@@ -2,6 +2,7 @@ package com.example.weiliang.group_project;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.PersistableBundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,7 @@ public class MainMenuActivity extends AppCompatActivity {
     public final static String KEY_CARDS_SETTINGS = "com.example.weiliang.group_project.Cards_Settings";
     public final static String KEY_RECORD_HISTORY = "com.example.weiliang.group_project.Record_History";
     public final static int REQUEST_CODE = 1;
+    public final static int REQUEST_CODE_USER_ID = 2;
 
     private int userId;
 
@@ -58,12 +60,13 @@ public class MainMenuActivity extends AppCompatActivity {
 
         if(id == R.id.action_settings){
             Intent intent = new Intent(this, SettingActivity.class);
-            startActivity(intent);
+            intent.putExtra(LoginActivity.KEY_USERID, userId);
+            startActivityForResult(intent, REQUEST_CODE_USER_ID);
             return true;
         } else if(id == R.id.action_history){
             Intent intent = new Intent(this, HistoryActivity.class);
             intent.putExtra(LoginActivity.KEY_USERID, userId);
-            startActivity(intent);
+            startActivityForResult(intent, REQUEST_CODE_USER_ID);
         }
 
         return super.onOptionsItemSelected(item);
@@ -92,6 +95,24 @@ public class MainMenuActivity extends AppCompatActivity {
             Log.e(null, "Cards Setting: " + String.valueOf(cards_setting));
 
             mDb.insertHistory(userId, dateTime, totalRound, totalRoundWon, cards_setting);
+        } else if(requestCode == REQUEST_CODE_USER_ID && resultCode == RESULT_OK){
+            userId = data.getIntExtra(LoginActivity.KEY_USERID, 0);
+            Log.e(null, "User ID: " + String.valueOf(userId));
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+
+        outState.putInt("userId", userId);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        userId = savedInstanceState.getInt("userId");
+        Log.e(null, "User ID: " + String.valueOf(userId));
     }
 }
