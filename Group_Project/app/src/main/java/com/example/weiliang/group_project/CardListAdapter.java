@@ -51,7 +51,7 @@ public class CardListAdapter extends RecyclerView.Adapter<CardListAdapter.CardVi
     @Override
     public void onBindViewHolder(@NonNull CardViewHolder cardViewHolder, int position) {
         String cardName = cardList.get(position).getCardName();
-        cardViewHolder.mCount.setText(cardName);
+        //cardViewHolder.mCount.setText(cardName);
 
         if(updateImage){
             cardViewHolder.iv_card.setImageResource(R.drawable.cards_cover);

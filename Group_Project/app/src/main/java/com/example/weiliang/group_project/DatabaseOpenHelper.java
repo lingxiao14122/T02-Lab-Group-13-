@@ -82,20 +82,17 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
         try{
             if(readableDb == null) readableDb = getReadableDatabase();
-            String sqlStatement = "SELECT * FROM `" + USER_INFO_TABLE_NAME + "`";
+            String sqlStatement = "SELECT * FROM `" + USER_INFO_TABLE_NAME + "` WHERE `full_name` = '" + username + "' AND `password` = '" + password + "'";
+            Log.e(null, sqlStatement);
             search = readableDb.rawQuery(sqlStatement, null);
-            search.moveToFirst();
 
-            loop:{
-                for(int i = 0; i < search.getCount(); i++){
-                    search.move(i);
-                    if(username.equals(search.getString(search.getColumnIndex("username"))) && password.equals(search.getString(search.getColumnIndex("password")))){
-                        result = true;
-                        break loop;
-                    }
-                }
+            Log.e(null, String.valueOf(search.getCount()));
+
+            if(search.moveToFirst()){
+                result = true;
+            } else {
+                result = false;
             }
-
         } catch (Exception e){
             Log.e("Database Exception: ", e.getMessage());
         }
@@ -109,18 +106,16 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
         try{
             if (readableDb == null) readableDb = getReadableDatabase();
-            String sqlStatement = "SELECT * FROM `" + USER_INFO_TABLE_NAME + "`";
+            String sqlStatement = "SELECT * FROM `" + USER_INFO_TABLE_NAME + "` WHERE `full_name` = '" + username + "' AND `password` = '" + password + "'";
             search = readableDb.rawQuery(sqlStatement, null);
             search.moveToFirst();
 
-            loop:{
-                for(int i = 0; i < search.getCount(); i ++){
-                    search.move(i);
-                    if(username.equals(search.getString(search.getColumnIndex("username"))) && password.equals(search.getString(search.getColumnIndex("password")))){
-                        result = search.getInt(search.getColumnIndex("_id"));
-                        break loop;
-                    }
-                }
+            Log.e(null, String.valueOf(search.getCount()));
+
+            if(search.moveToFirst()){
+                result = search.getInt(search.getColumnIndex("_id"));
+            } else {
+                result = 0;
             }
         } catch (Exception e){
             Log.e("Database Exception: ", e.getMessage());

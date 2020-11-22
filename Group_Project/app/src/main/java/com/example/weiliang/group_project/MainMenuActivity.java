@@ -67,6 +67,11 @@ public class MainMenuActivity extends AppCompatActivity {
             Intent intent = new Intent(this, HistoryActivity.class);
             intent.putExtra(LoginActivity.KEY_USERID, userId);
             startActivityForResult(intent, REQUEST_CODE_USER_ID);
+            return true;
+        } else if(id == R.id.action_logout){
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
